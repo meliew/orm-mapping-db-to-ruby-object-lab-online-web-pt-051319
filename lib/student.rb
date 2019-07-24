@@ -74,7 +74,7 @@ class Student
     sql = <<-SQL
       SELECT *
       FROM students
-      WHERE GRADE <11
+      WHERE GRADE <12
     SQL
 
     DB[:conn].execute(sql)
