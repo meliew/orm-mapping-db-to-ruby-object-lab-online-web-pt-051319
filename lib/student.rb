@@ -11,8 +11,8 @@ class Student
 
   def self.all
     sql = <<-SQL
-      SELECT *
-      FROM students
+    SELECT *
+    FROM students
     SQL
 
     DB[:conn].execute(sql).map do |row|
@@ -22,10 +22,10 @@ class Student
 
   def self.find_by_name(name)
     sql = <<-SQL
-      SELECT *
-      FROM students
-      WHERE name = ?
-      LIMIT 1
+    SELECT *
+    FROM students
+    WHERE name = ?
+    LIMIT 1
     SQL
 
     DB[:conn].execute(sql, name).map do |row|
@@ -36,8 +36,8 @@ class Student
 
   def save
     sql = <<-SQL
-      INSERT INTO students (name, grade)
-      VALUES (?, ?)
+    INSERT INTO students (name, grade)
+    VALUES (?, ?)
     SQL
 
     DB[:conn].execute(sql, self.name, self.grade)
@@ -62,9 +62,9 @@ class Student
 
   def self.all_students_in_grade_9
     sql = <<-SQL
-      SELECT *
-      FROM students
-      WHERE GRADE == 9
+    SELECT *
+    FROM students
+    WHERE GRADE == 9
     SQL
 
     DB[:conn].execute(sql)
@@ -86,10 +86,10 @@ class Student
   def self.first_X_students_in_grade_10(x)
 
     sql = <<-SQL
-      SELECT *
-      FROM students
-      WHERE grade = 10
-      LIMIT x
+    SELECT *
+    FROM students
+    WHERE grade = 10
+    LIMIT x
     SQL
 
     DB[:conn].execute(sql).collect do |row|
@@ -103,10 +103,11 @@ class Student
     FROM students
     WHERE GRADE = 10
     LIMIT 1
-  SQL
+    SQL
 
-  DB[:conn].execute(sql).collect do |row|
-    self.new_from_db(row)
-  end.first
-end
+    DB[:conn].execute(sql).collect do |row|
+      self.new_from_db(row)
+    end.first
+  end
+
 end
