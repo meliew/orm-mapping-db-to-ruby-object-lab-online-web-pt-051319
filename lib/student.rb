@@ -89,8 +89,8 @@ class Student
     SELECT *
     FROM students
     WHERE grade = 10
-    ORDER By students.id
-    LIMIT ?
+    ORDER BY students.id
+    LIMIT x
     SQL
 
     DB[:conn].execute(sql, x)
