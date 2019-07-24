@@ -72,12 +72,14 @@ class Student
 
   def self.students_below_12th_grade
     sql = <<-SQL
-    SELECT name
+    SELECT *
     FROM students
     WHERE grade < 12
     SQL
 
-    DB[:conn].execute(sql)
+    DB[:conn].execute(sql).collect do |row|
+      self.new_from_db(row)
+    end
   end
 
 
@@ -87,7 +89,7 @@ class Student
     sql = <<-SQL
       SELECT *
       FROM students
-      WHERE grade = 10
+      WHERE grade < 10
       LIMIT num
     SQL
 
