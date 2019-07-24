@@ -89,7 +89,7 @@ class Student
     SELECT *
     FROM students
     WHERE grade = 10
-    ORDER BY students.id
+    ORDER BY id
     LIMIT ?
     SQL
 
