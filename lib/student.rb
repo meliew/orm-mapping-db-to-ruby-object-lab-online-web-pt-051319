@@ -116,7 +116,7 @@ class Student
     WHERE GRADE == chosen_grade
     SQL
 
-    DB[:conn].execute(sql, chosem_grade)
+    DB[:conn].execute(sql, chosen_grade)
 
   end
 
